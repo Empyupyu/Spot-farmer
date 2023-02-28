@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.25
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.083333336
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: aa43639b524b5c547bf36c5c0e01ad6c, type: 2}
 --- !u!1 &358084912
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floating Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219457, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8170153792821263258, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -410,6 +414,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153792821263258, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263259, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -810,6 +818,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1660834553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9128545312741729681, guid: 46968b4e95191484a9cffd28963827a4, type: 3}
+  m_PrefabInstance: {fileID: 6984989260420436665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836879382
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +921,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8897899029721558493, guid: 46968b4e95191484a9cffd28963827a4, type: 3}
   m_PrefabInstance: {fileID: 6984989260420436665}
   m_PrefabAsset: {fileID: 0}
+--- !u!195 &6984989260420436667
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660834553}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &8049481702133140626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -922,6 +957,14 @@ PrefabInstance:
     - target: {fileID: 1399167265485746524, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058076554999168028, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044979681026747931, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.16
       objectReference: {fileID: 0}
     - target: {fileID: 8045021363206480873, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
       propertyPath: m_LocalPosition.z
@@ -982,6 +1025,10 @@ PrefabInstance:
     - target: {fileID: 8049481701073114553, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049481701707809940, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8051234374057159423, guid: d14bf66e3b4742a4083fe897be0cee54, type: 3}
       propertyPath: m_LocalRotation.w
