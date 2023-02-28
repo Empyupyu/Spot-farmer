@@ -669,6 +669,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 683379384}
+    - target: {fileID: 7609736763923472523, guid: af62da05f125b5244b0a55aeb1cc0908, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 548c79f9fca82cb4eb07197aed0d2f91, type: 2}
     - target: {fileID: 8678313908596681360, guid: af62da05f125b5244b0a55aeb1cc0908, type: 3}
       propertyPath: m_RootOrder
       value: 1

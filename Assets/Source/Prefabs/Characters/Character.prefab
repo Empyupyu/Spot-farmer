@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8897899029721558493}
   - component: {fileID: 6984989260420436667}
   - component: {fileID: 6984989260420436668}
+  - component: {fileID: -1544990000795899962}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -67,7 +68,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54859b67ed2e2ec47b37218d3df56b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
   navMeshAgent: {fileID: 6984989260420436667}
   animator: {fileID: 0}
   playerData: {fileID: 11400000, guid: 548c79f9fca82cb4eb07197aed0d2f91, type: 2}
+--- !u!114 &-1544990000795899962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128545312741729681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8052262bf2cb2408065514472fd5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
