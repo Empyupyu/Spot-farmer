@@ -1,14 +1,17 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class Mineable : MonoBehaviour
 {
     [SerializeField] private ResourceData resourceData;
+    [SerializeField] private Transform objectGraphics;
 
     private int currentHealth;
 
     private void Start()
     {
-        currentHealth = resourceData.Health;
+        SetStartHealth();
     }
 
     public ResourceType GetResourceType()
@@ -18,17 +21,52 @@ public class Mineable : MonoBehaviour
 
     public void Hit()
     {
+        if (!ActiveForMining()) return;
+
         --currentHealth;
 
+        AnimationAfterHit();
         CreateResource();
+
+        if (ActiveForMining()) return;
+
+        StartCoroutine(Recovery());
+    }
+
+    private void AnimationAfterHit()
+    {
+        objectGraphics.DORewind();
+
+        objectGraphics.DOShakeScale(resourceData.ShakeDuration, resourceData.ShakePower,
+            resourceData.ShakeVibrato, resourceData.ShakeRandomness);
+    }
+
+    private void SetStartHealth()
+    {
+        currentHealth = resourceData.Health;
+    }
+
+    public bool ActiveForMining()
+    {
+        return currentHealth > 0;
+    }
+
+    private IEnumerator Recovery()
+    {
+        objectGraphics.DORewind();
+        objectGraphics.DOScale(.7f, 1f);
+
+        yield return new WaitForSeconds(resourceData.RecoveryTime);
+
+        objectGraphics.DOScale(1, .5f).OnComplete(() => SetStartHealth());
     }
 
     private void CreateResource()
     {
         for (int i = 0; i < resourceData.ResourceCountPerHit; i++)
         {
-            var resource =  Instantiate(resourceData.Resource, transform.position, Quaternion.identity);
-
+            var resource =  Instantiate(resourceData.Resource, transform.position + new Vector3(0, transform.localScale.y, 0), Random.rotation);
+            resource.ApplySpawnForce();
         }
     }
 }

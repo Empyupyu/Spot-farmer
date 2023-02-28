@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider), typeof(Rigidbody))]
 public class Miner : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
 
     private Mineable mineable;
+    private Coroutine mineCoroutine;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (this.mineable != null) return;
         if (!other.TryGetComponent<Mineable>(out var mineable)) return;
 
         this.mineable = mineable;
 
-        StartCoroutine(Mine());
-    }
-
-    private void Mining()
-    {
-        
+        mineCoroutine = StartCoroutine(Mine());
     }
 
     private IEnumerator Mine()
@@ -28,13 +26,23 @@ public class Miner : MonoBehaviour
         var type = mineable.GetResourceType();
         var data = playerData.ResourceMiningSpeed.FirstOrDefault(r => r.ResourceType.Equals(type));
 
-        yield return new WaitForSeconds(data.Speed);
+        while (true)
+        {
+            yield return new WaitForSeconds(data.Speed);
 
-        mineable.
+            mineable.Hit();
+
+            yield return new WaitUntil(() => mineable.ActiveForMining());
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if (mineable == null) return;
+        if (!other.transform.Equals(mineable.transform)) return;
+
+        StopCoroutine(mineCoroutine);
+        mineCoroutine = null;
+        mineable = null;
     }
 }
