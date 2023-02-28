@@ -8,6 +8,11 @@ public class Resource : MonoBehaviour
 
     public void ApplySpawnForce()
     {
-        rigidbody.AddForce(transform.up * resourceData.SpawnForcePower, ForceMode.Impulse);
+        var direction = Vector3.zero - transform.position;
+        direction.y = 1f;
+
+        var force = new Vector3(direction.normalized.x * resourceData.SpawnForcePower.x, direction.y * resourceData.SpawnForcePower.y, direction.normalized.z * resourceData.SpawnForcePower.z);
+
+        rigidbody.AddForce(force, ForceMode.Impulse);
     }
 }

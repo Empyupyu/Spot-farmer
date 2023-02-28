@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5ae792c9d34f3459c2108428704194, type: 3}
   m_Name: Metal Resource Data
   m_EditorClassIdentifier: 
+  <Resource>k__BackingField: {fileID: 9103728639554491107, guid: 4c691356f7bd9e246bb0ded78e49f958, type: 3}
+  <DelayPickUpOnSpawn>k__BackingField: 3
   <ResourceCountPerHit>k__BackingField: 2
   <Health>k__BackingField: 5
   <RecoveryTime>k__BackingField: 10
+  <SpawnForcePower>k__BackingField: {x: 3, y: 8, z: 3}
   <ResourceType>k__BackingField: 1
-  <Resource>k__BackingField: {fileID: 9103728639554491107, guid: 4c691356f7bd9e246bb0ded78e49f958, type: 3}
-  <SpawnForcePower>k__BackingField: 5
   <ShakeDuration>k__BackingField: 0.5
   <ShakePower>k__BackingField: 0.1
   <ShakeVibrato>k__BackingField: 4
   <ShakeRandomness>k__BackingField: 25
+  <DisableScale>k__BackingField: 0.8
+  <ScaleDisableDuration>k__BackingField: 0.4
+  <ScaleToOriginDuration>k__BackingField: 0.35

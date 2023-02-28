@@ -8,9 +8,11 @@ public class Mineable : MonoBehaviour
     [SerializeField] private Transform objectGraphics;
 
     private int currentHealth;
+    private float originScale;
 
     private void Start()
     {
+        originScale = transform.localScale.x;
         SetStartHealth();
     }
 
@@ -54,18 +56,18 @@ public class Mineable : MonoBehaviour
     private IEnumerator Recovery()
     {
         objectGraphics.DORewind();
-        objectGraphics.DOScale(.7f, 1f);
+        objectGraphics.DOScale(resourceData.DisableScale, resourceData.ScaleDisableDuration);
 
         yield return new WaitForSeconds(resourceData.RecoveryTime);
 
-        objectGraphics.DOScale(1, .5f).OnComplete(() => SetStartHealth());
+        objectGraphics.DOScale(originScale, resourceData.ScaleToOriginDuration).OnComplete(() => SetStartHealth());
     }
 
     private void CreateResource()
     {
         for (int i = 0; i < resourceData.ResourceCountPerHit; i++)
         {
-            var resource =  Instantiate(resourceData.Resource, transform.position + new Vector3(0, transform.localScale.y, 0), Random.rotation);
+            var resource =  Instantiate(resourceData.Resource, transform.position + new Vector3(0, 2f, 0), Random.rotation);
             resource.ApplySpawnForce();
         }
     }
