@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   <MovmentSpeed>k__BackingField: 5
-  <PickupRadius>k__BackingField: 1
+  <PickupRadius>k__BackingField: 2
   <ResourceMiningSpeed>k__BackingField:
   - ResourceType: 0
     Speed: 1

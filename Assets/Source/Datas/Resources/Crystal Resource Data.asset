@@ -19,10 +19,10 @@ MonoBehaviour:
   <RecoveryTime>k__BackingField: 15
   <SpawnForcePower>k__BackingField: {x: 2, y: 5, z: 2}
   <ResourceType>k__BackingField: 2
-  <ShakeDuration>k__BackingField: 0
-  <ShakePower>k__BackingField: 0
-  <ShakeVibrato>k__BackingField: 0
-  <ShakeRandomness>k__BackingField: 0
-  <DisableScale>k__BackingField: 0.9
+  <ShakeDuration>k__BackingField: 0.5
+  <ShakePower>k__BackingField: 0.4
+  <ShakeVibrato>k__BackingField: 3
+  <ShakeRandomness>k__BackingField: 15
+  <DisableScale>k__BackingField: 14
   <ScaleDisableDuration>k__BackingField: 0.6
   <ScaleToOriginDuration>k__BackingField: 0.45
