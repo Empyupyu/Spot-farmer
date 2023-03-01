@@ -97,11 +97,11 @@ PrefabInstance:
     - target: {fileID: -6674241138709592107, guid: 96652a323a8d41a4ba2170a38b8a689f, type: 3}
       propertyPath: resourceData
       value: 
-      objectReference: {fileID: 11400000, guid: 3bf40d6cef3a5e04fa492bae37ce37a8, type: 2}
+      objectReference: {fileID: 11400000, guid: daddfc81de3d0004bbc6fe5cfa762464, type: 2}
     - target: {fileID: 1502257944318106842, guid: 96652a323a8d41a4ba2170a38b8a689f, type: 3}
       propertyPath: resourceData
       value: 
-      objectReference: {fileID: 11400000, guid: 3bf40d6cef3a5e04fa492bae37ce37a8, type: 2}
+      objectReference: {fileID: 11400000, guid: daddfc81de3d0004bbc6fe5cfa762464, type: 2}
     - target: {fileID: 2885025986998922225, guid: 96652a323a8d41a4ba2170a38b8a689f, type: 3}
       propertyPath: m_RootOrder
       value: 0

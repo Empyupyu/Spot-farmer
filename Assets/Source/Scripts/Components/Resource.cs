@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -5,6 +6,12 @@ public class Resource : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private ResourceData resourceData;
+
+    public void SetJumpPosition(Vector3 position, float speed)
+    {
+        rigidbody.isKinematic = true;
+        transform.DOJump(position, 1, 1, speed);
+    }
 
     public void ApplySpawnForce()
     {

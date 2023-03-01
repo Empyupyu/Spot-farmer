@@ -48,6 +48,7 @@ public class ResourceUIScreen : MonoBehaviour
 
         if (value <= 0)
         {
+            ResourceUICounters.Remove(counter);
             Destroy(counter.gameObject);
             return;
         }

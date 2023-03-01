@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [Serializable]
 public class SaveResource
@@ -10,7 +11,7 @@ public class SaveResource
 
     public void AddResource(ResourceType resourceType)
     {
-        if (!DicResourceTypes.ContainsKey(resourceType))
+        if (!IsContainsResource(resourceType))
         {
             DicResourceTypes.Add(resourceType, 0);
         }
@@ -19,6 +20,20 @@ public class SaveResource
 
         OnResourceTypeChange?.Invoke(resourceType);
     }
+
+    public void RemoveResource(ResourceType resourceType)
+    {
+        if (!IsContainsResource(resourceType)) return;
+
+        --DicResourceTypes[resourceType];
+
+        OnResourceTypeChange?.Invoke(resourceType);
+    }
+
+    private bool IsContainsResource(ResourceType resourceType)
+    {
+        return DicResourceTypes.ContainsKey(resourceType);
+    } 
 
     public void ResetSubscribes()
     {

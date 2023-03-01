@@ -8,6 +8,6 @@ public class FactoryData : ScriptableObject
     [field : SerializeField] public int AmoutResourcesToGenerateNew { get; private set; }
     [field : SerializeField] public int AmoutNewResourcesGenerated { get; private set; }
     [field : SerializeField] public ResourceType InResourceType { get; private set; }
-    [field : SerializeField] public ResourceType OutResourceType { get; private set; }
+    [field : SerializeField] public Resource OutResource { get; private set; }
 }
 
