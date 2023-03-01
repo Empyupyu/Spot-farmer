@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Resource>k__BackingField: {fileID: 9103728639554491107, guid: 4c691356f7bd9e246bb0ded78e49f958, type: 3}
   <DelayPickUpOnSpawn>k__BackingField: 3
+  <Icon>k__BackingField: {fileID: 21300000, guid: f82dfc5fc3c5a8f4080a3550427019c8, type: 3}
   <ResourceCountPerHit>k__BackingField: 2
   <Health>k__BackingField: 5
   <RecoveryTime>k__BackingField: 10

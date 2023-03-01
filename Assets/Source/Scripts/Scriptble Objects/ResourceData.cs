@@ -5,6 +5,7 @@ public class ResourceData : ScriptableObject
 {
      [field : SerializeField, Header("Resource Settings")] public Resource Resource { get; private set; }
      [field : SerializeField] public float DelayPickUpOnSpawn { get; private set; }
+     [field : SerializeField] public Sprite Icon { get; private set; }
      [field : SerializeField, Header("Resource Spot Settings")] public int ResourceCountPerHit { get; private set; }
      [field : SerializeField] public int Health { get; private set; }
      [field : SerializeField] public float RecoveryTime { get; private set; }

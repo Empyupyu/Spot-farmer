@@ -10,6 +10,11 @@ public class PickUpable : MonoBehaviour
 
     private bool canPickUp;
 
+    public ResourceType GetResourceType()
+    {
+        return resourceData.ResourceType;
+    }
+
     public bool CanPickUp()
     {
         return canPickUp;
@@ -28,7 +33,7 @@ public class PickUpable : MonoBehaviour
         collider.enabled = false;
 
         transform.DOLocalRotate(Vector3.zero, .8f);
-        transform.DOLocalJump(transform.parent.transform.childCount * new Vector3(0,.5f, 0), 1, 1, 1f);
+        transform.DOLocalJump(new Vector3(0,.5f, 0), 1, 1, 1f).OnComplete(() => gameObject.SetActive(false));
     }
 
     private IEnumerator Start()

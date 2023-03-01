@@ -6,6 +6,7 @@ public class Mineable : MonoBehaviour
 {
     [SerializeField] private ResourceData resourceData;
     [SerializeField] private Transform objectGraphics;
+    [SerializeField] private Vector3 spawnResourcePositionOffset = new Vector3(0, 2f, 0);
 
     private int currentHealth;
     private float originScale;
@@ -67,7 +68,7 @@ public class Mineable : MonoBehaviour
     {
         for (int i = 0; i < resourceData.ResourceCountPerHit; i++)
         {
-            var resource =  Instantiate(resourceData.Resource, transform.position + new Vector3(0, 2f, 0), Random.rotation);
+            var resource =  Instantiate(resourceData.Resource, transform.position + spawnResourcePositionOffset, Random.rotation);
             resource.ApplySpawnForce();
         }
     }

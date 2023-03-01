@@ -2,5 +2,8 @@ public enum ResourceType
 {
     Wood,
     Metal,
-    Crystal
+    Crystal,
+    WoodenPlank,
+    MetalIngot,
+    Diamond
 }
