@@ -13,7 +13,7 @@ public class Mineable : MonoBehaviour
 
     private void Start()
     {
-        originScale = transform.localScale.x;
+        originScale = objectGraphics.localScale.x;
         SetStartHealth();
     }
 
@@ -57,7 +57,7 @@ public class Mineable : MonoBehaviour
     private IEnumerator Recovery()
     {
         objectGraphics.DORewind();
-        objectGraphics.DOScale(resourceData.DisableScale, resourceData.ScaleDisableDuration);
+        objectGraphics.DOScale(originScale * resourceData.DisableScale, resourceData.ScaleDisableDuration);
 
         yield return new WaitForSeconds(resourceData.RecoveryTime);
 

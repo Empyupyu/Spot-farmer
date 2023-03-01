@@ -27,11 +27,15 @@ public class PickUpable : MonoBehaviour
         TransitionToLocalPoint();
     }
 
-    private void TransitionToLocalPoint()
+    public void Disable()
     {
         rigidbody.isKinematic = true;
         collider.enabled = false;
+    }
 
+    private void TransitionToLocalPoint()
+    {
+        Disable();
         transform.DOLocalRotate(Vector3.zero, .8f);
         transform.DOLocalJump(new Vector3(0,.5f, 0), 1, 1, 1f).OnComplete(() => gameObject.SetActive(false));
     }

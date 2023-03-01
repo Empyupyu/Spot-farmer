@@ -24,6 +24,6 @@ MonoBehaviour:
   <ShakePower>k__BackingField: 0.4
   <ShakeVibrato>k__BackingField: 3
   <ShakeRandomness>k__BackingField: 15
-  <DisableScale>k__BackingField: 14
+  <DisableScale>k__BackingField: 0.8
   <ScaleDisableDuration>k__BackingField: 0.6
   <ScaleToOriginDuration>k__BackingField: 0.45

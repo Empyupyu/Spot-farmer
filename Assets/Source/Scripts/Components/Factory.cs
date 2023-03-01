@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,14 +11,16 @@ public class Factory : MonoBehaviour
     [SerializeField] private Transform outPoint;
     [SerializeField] private CollisionListener collisionListener;
     [SerializeField] private FactoryData FactoryData;
+    [SerializeField] private Vector3 startOffset = new Vector3(0, 1.5f, 0);
 
-    private List<Resource> inventoryResources = new List<Resource>();
     private List<Resource> inResources = new List<Resource>();
-    private List<Resource> outResources = new List<Resource>();
+    private List<Resource> poolResources = new List<Resource>();
 
-    private Coroutine takingCoroutine;
     private Coroutine workingCoroutine;
+    private Coroutine takingCoroutine;
     private Inventory inventory;
+
+    private int availableResources;
 
     private void Awake()
     {
@@ -29,16 +32,20 @@ public class Factory : MonoBehaviour
     {
         if (!obj.TryGetComponent(out Inventory inv)) return;
         if (inventory != null) return;
+        if (takingCoroutine != null) return;
 
         inventory = inv;
 
         var resources = inventory.GetResources();
-
         if (resources.DicResourceTypes.Count == 0) return;
 
-        inventoryResources = inventory.TakeResource(FactoryData.InResourceType);
+        var type = FactoryData.InResource.GetResourceType();
 
-        if (inventoryResources == null) return;
+        if (!resources.DicResourceTypes.ContainsKey(type)) return;
+
+        availableResources = resources.DicResourceTypes[type];
+
+        if (availableResources == 0) return;
 
         takingCoroutine = StartCoroutine(TransitionIn());
     }
@@ -53,29 +60,63 @@ public class Factory : MonoBehaviour
 
     private IEnumerator TransitionIn()
     {
-        while (inventoryResources.Count > 0)
+        var type = FactoryData.InResource.GetResourceType();
+
+        while (availableResources > 0)
         {
-            var res = inventoryResources[0];
-            inventoryResources.RemoveAt(0);
+            if (inventory == null) break;
 
-            res.transform.parent = null;
-            res.gameObject.SetActive(true);
+            RemoveInventoryResource(type);
 
-            inventory.RemoveResouce(FactoryData.InResourceType);
+            var res = GetResource(type);
 
+            yield return res.transform.DOMove(RandomizeStartPosition(), FactoryData.MoveDurationOnStartPosition).WaitForCompletion();
+            yield return new WaitForSeconds(FactoryData.DelayBeforeTransition);
             yield return res.transform.DOMove(inPoint.position, FactoryData.DelayTransitionResourceInSpot).WaitForCompletion();
 
-            inResources.Add(res);
+            if (workingCoroutine == null) workingCoroutine = StartCoroutine(Working());
 
-            if (workingCoroutine == null)
-            {
-                workingCoroutine = StartCoroutine(Working());
-            }
+            res.gameObject.SetActive(false);
+        }
+        takingCoroutine = null;
+    }
 
-            if (inventory == null) break;
+    private void RemoveInventoryResource(ResourceType type)
+    {
+        inventory.RemoveResouce(type);
+        --availableResources;
+    }
+
+    private Resource GetResource(ResourceType type)
+    {
+        var res = poolResources.FirstOrDefault(r => r.GetResourceType() == type && !r.gameObject.activeSelf);
+
+        if(res == null)
+        {
+            res = Instantiate(FactoryData.InResource, inventory.transform.position, Random.rotation);
+            res.Disable();
+            poolResources.Add(res);
+        }
+        else
+        {
+            res.transform.position = inventory.transform.position;
+            res.gameObject.SetActive(true);
         }
 
-        takingCoroutine = null;
+        inResources.Add(res);
+
+        return res;
+    }
+
+    private Vector3 RandomizeStartPosition()
+    {
+        var radius = FactoryData.StartPositionRadiusToTransition / 2;
+
+        var xRandomPosition = inventory.transform.position.x + Random.Range(-radius, radius);
+        var yRandomPosition = startOffset.y + Random.Range(-radius, radius);
+        var zRandomPosition = inventory.transform.position.z + Random.Range(-radius, radius);
+
+        return new Vector3(xRandomPosition, yRandomPosition, zRandomPosition);
     }
 
     private IEnumerator Working()
@@ -93,8 +134,6 @@ public class Factory : MonoBehaviour
                 yield return new WaitForSeconds(.5f);
 
                 RemoveInResources();
-
-                outResources.Add(resource);
             }
         }
 

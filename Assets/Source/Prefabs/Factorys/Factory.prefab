@@ -132,6 +132,7 @@ MonoBehaviour:
   outPoint: {fileID: 5486350270280326670}
   collisionListener: {fileID: 3170575310598878807}
   FactoryData: {fileID: 0}
+  startOffset: {x: 0, y: 1.5, z: 0}
 --- !u!135 &3488940663990968684
 SphereCollider:
   m_ObjectHideFlags: 0

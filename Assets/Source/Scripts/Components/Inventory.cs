@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -12,18 +11,12 @@ public class Inventory : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private Vector3 offsetResourceInStack;
 
-    private Dictionary<ResourceType, List<Resource>> resources = new Dictionary<ResourceType, List<Resource>>();
     private string savePath;
     private SaveResource saveResource = new SaveResource();
 
     public SaveResource GetResources()
     {
         return saveResource;
-    }
-
-    public List<Resource> TakeResource(ResourceType resource)
-    {
-        return resources.ContainsKey(resource) ? resources[resource] : null;
     }
 
     private void Awake()
@@ -41,15 +34,6 @@ public class Inventory : MonoBehaviour
         if (!pickupable.CanPickUp()) return;
 
         pickupable.PickUp(stackPosition);
-
-        var res = resources.ContainsKey(pickupable.GetResourceType());
-
-        if(!res)
-        {
-            resources.Add(pickupable.GetResourceType(), new List<Resource>());
-        }
-
-        resources[pickupable.GetResourceType()].Add(pickupable.GetComponent<Resource>());
 
         AddResource(pickupable.GetResourceType());
     }

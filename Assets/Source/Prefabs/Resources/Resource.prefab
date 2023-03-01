@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1502257944318106842}
   - component: {fileID: 5956327394728928378}
   - component: {fileID: -6674241138709592107}
+  - component: {fileID: -8040657308835747780}
   m_Layer: 6
   m_Name: Resource
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5956327394728928378}
+  collider: {fileID: -8040657308835747780}
   resourceData: {fileID: 0}
 --- !u!54 &5956327394728928378
 Rigidbody:
@@ -78,3 +80,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceData: {fileID: 0}
   rigidbody: {fileID: 5956327394728928378}
+  collider: {fileID: -8040657308835747780}
+--- !u!65 &-8040657308835747780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439130619973224059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
