@@ -18,3 +18,4 @@ public class ResourceData : ScriptableObject
      [field : SerializeField] public float ScaleDisableDuration { get; private set; }
      [field : SerializeField] public float ScaleToOriginDuration { get; private set; }
 }
+

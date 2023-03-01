@@ -1290,6 +1290,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory 2 Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3750266794853081037, guid: b549c364f0b00b246af2b5a668b9cb3d, type: 3}
+      propertyPath: m_Shape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750266794853081037, guid: b549c364f0b00b246af2b5a668b9cb3d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6771274349900070022, guid: b549c364f0b00b246af2b5a668b9cb3d, type: 3}
       propertyPath: m_RootOrder
       value: 2

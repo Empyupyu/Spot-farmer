@@ -19,10 +19,10 @@ public class PickUpable : MonoBehaviour
     {
         transform.parent = parent;
 
-        TransitionToPoint();
+        TransitionToLocalPoint();
     }
 
-    private void TransitionToPoint()
+    private void TransitionToLocalPoint()
     {
         rigidbody.isKinematic = true;
         collider.enabled = false;

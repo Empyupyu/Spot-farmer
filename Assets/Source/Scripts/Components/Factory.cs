@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CollisionListener))]
 public class Factory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Transform inPoint;
+    [SerializeField] private Transform outPoint;
+    [SerializeField] private CollisionListener collisionListener;
+    [SerializeField] private FactoryData FactoryData;
 }
