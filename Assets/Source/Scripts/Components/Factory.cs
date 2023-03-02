@@ -24,12 +24,13 @@ public class Factory : MonoBehaviour
 
     private void Awake()
     {
-        collisionListener.OnTriggerEnterEvent += OnEnter;
-        collisionListener.OnTriggerExitEvent += OnExit; ;
+        collisionListener.OnTriggerStayEvent += OnStay;
+        collisionListener.OnTriggerExitEvent += OnExit;
     }
 
-    private void OnEnter(Transform obj)
+    private void OnStay(Transform obj)
     {
+        if (Input.touchCount > 0) return;
         if (!obj.TryGetComponent(out Inventory inv)) return;
         if (inventory != null) return;
         if (takingCoroutine != null) return;
@@ -64,7 +65,7 @@ public class Factory : MonoBehaviour
 
         while (availableResources > 0)
         {
-            if (inventory == null) break;
+            if (inventory == null || Input.touchCount > 0) break;
 
             RemoveInventoryResource(type);
 
@@ -78,6 +79,8 @@ public class Factory : MonoBehaviour
 
             res.gameObject.SetActive(false);
         }
+
+        inventory = null;
         takingCoroutine = null;
     }
 

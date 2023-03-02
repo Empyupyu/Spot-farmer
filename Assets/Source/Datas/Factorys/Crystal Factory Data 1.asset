@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ce8a855582f734ab3832331a37fe54, type: 3}
   m_Name: Crystal Factory Data 1
   m_EditorClassIdentifier: 
-  <ProductionTime>k__BackingField: 3
+  <ProductionTime>k__BackingField: 5
   <DelayTransitionResourceInSpot>k__BackingField: 1
-  <StartPositionRadiusToTransition>k__BackingField: 1.5
+  <StartPositionRadiusToTransition>k__BackingField: 1.2
   <MoveDurationOnStartPosition>k__BackingField: 0.1
   <DelayBeforeTransition>k__BackingField: 0.05
-  <AmoutResourcesToGenerateNew>k__BackingField: 3
+  <AmoutResourcesToGenerateNew>k__BackingField: 5
   <AmoutNewResourcesGenerated>k__BackingField: 1
   <InResource>k__BackingField: {fileID: 9103728639554491107, guid: 390adab0705a09e4192a546efaea146e, type: 3}
   <OutResource>k__BackingField: {fileID: 9103728639554491107, guid: 4b8f0075c439cd840845988e225cd4c5, type: 3}
